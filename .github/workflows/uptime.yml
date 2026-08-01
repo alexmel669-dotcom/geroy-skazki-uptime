@@ -7,11 +7,10 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping API
+      - name: Ping 3 times
         run: |
-          curl -s -o /dev/null -w "%{http_code}" https://geroy-skazki.ru/api/health
-          echo ""
-      - name: Ping landing
-        run: |
-          curl -s -o /dev/null -w "%{http_code}" https://geroy-skazki.ru
-          echo ""
+          for i in 1 2 3; do
+            curl -s -o /dev/null -w "%{http_code}" https://geroy-skazki.ru/api/health
+            echo ""
+            sleep 2
+          done
